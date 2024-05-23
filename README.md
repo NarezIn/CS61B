@@ -1,3 +1,1 @@
-/*
- * A record of what I learned
- */
+//A record of what I learned
