@@ -3,6 +3,7 @@
  * Original problems available at: https://practiceit.cs.washington.edu/
  *
  * @author Erik Kizior
+ * filled in by NarezIn on 5/20/2025
  */
 
 // TODO: What is the output of the following program?
@@ -15,9 +16,18 @@ public class NumberTotal {
         }
     }
 }
-
 /* Before running the code, type your answer below.
 
 TODO: Write output here
-
+23 1
+21 2
+18 3
+14 4
+9 5
+My answer is wrong, it should be:
+24 1
+22 2
+19 3
+15 4
+10 5
 Then, click the green play button to check your work. */

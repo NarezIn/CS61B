@@ -4,6 +4,7 @@
  * Original problems available at: https://practiceit.cs.washington.edu/
  *
  * @author Erik Kizior
+ * filled in by NarezIn on 5/20/2025
  */
 public class JavaExercises {
 
@@ -13,6 +14,15 @@ public class JavaExercises {
      */
     public static void starTriangle() {
         // TODO: Fill in this function
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 5 - (i+1); j++){
+                System.out.print(" ");
+            }
+            for (int k = 0; k < i + 1; k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -21,6 +31,14 @@ public class JavaExercises {
      */
     public static void printIndexed(String s) {
         // TODO: Fill in this function
+        // Let's try using while loop this time.
+        int ii = 0;
+        while (ii < s.length()) {
+            System.out.print(s.charAt(ii));
+            System.out.print(s.length() - (ii + 1));
+            ii++;
+        }
+        System.out.println();
     }
 
     /**
@@ -29,7 +47,12 @@ public class JavaExercises {
      */
     public static String stutter(String s) {
         // TODO: Fill in this function
-        return null;
+        StringBuilder deliver = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            deliver.append(s.charAt(i));
+            deliver.append(s.charAt(i));
+        }
+        return deliver.toString();
     }
 
     /**
@@ -43,7 +66,25 @@ public class JavaExercises {
      */
     public static int quadrant(int x, int y) {
         // TODO: Fill in this function
-        return 0;
+        if (x == 0 || y == 0) {
+            return 0;
+        }
+        else if (x > 0) {
+            if (y > 0) {
+                return 1;
+            }
+            else{//y < 0
+                return 4;
+            }
+        }
+        else{//x < 0
+            if (y > 0) {
+                return 2;
+            }
+            else{//y < 0
+                return 3;
+            }
+        }
     }
 
     public static void main(String[] args) {

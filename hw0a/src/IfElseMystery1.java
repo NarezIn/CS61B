@@ -20,15 +20,18 @@ public class IfElseMystery1 {
 
     // TODO: For each call below, indicate what output is produced.
     public static void main(String[] args) {
-        ifElseMystery1(3, 20);
-        ifElseMystery1(4, 5);
-        ifElseMystery1(5, 5);
-        ifElseMystery1(6, 10);
+        ifElseMystery1(3, 20);//13 21
+        ifElseMystery1(4, 5); //5 6
+        ifElseMystery1(5, 5); //6 5
+        ifElseMystery1(6, 10);//7 11
     }
 }
 
 /* Before running the code, type your answer below.
 
 TODO: Write output here
-
+13 21
+5 6
+6 5
+7 11
 Then, click the green play button to check your work. */

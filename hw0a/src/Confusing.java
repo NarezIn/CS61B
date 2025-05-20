@@ -3,6 +3,7 @@
  * Original problems available at: https://practiceit.cs.washington.edu/
  *
  * @author Erik Kizior
+ * filled in by NarezIn on 5/20/2025
  */
 
 // TODO: What is the output of the following program?
@@ -30,6 +31,16 @@ public class Confusing {
 
 /* Before running the code, type your answer below.
 
-TODO: Write output here
-
+TODO: Write output here *with all honesty*.
+I am method 1.
+I am method 1.
+I am method 2.
+I am method 3.
+I am method 1.
+I am method 1.
+I am method 2.
+I am method 1.
+I am method 2.
+I am method 3.
+I am method 1.
 Then, click the green play button to check your work. */
