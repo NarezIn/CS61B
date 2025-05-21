@@ -1,1 +1,1 @@
-//A record of what I learned
+A record of me taking CS61B, Spring 2025
