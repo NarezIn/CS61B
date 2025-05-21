@@ -1,3 +1,5 @@
+import java.rmi.MarshalledObject;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +9,11 @@ public class MapExercises {
      */
     public static Map<Character, Integer> letterToNum() {
         // TODO: Fill in this function.
-        return null;
+        Map<Character, Integer> cMap = new HashMap<>();
+        for (int i = 0; i < 26; i++){
+            cMap.put((char) ('a' + i), i + 1);
+        }
+        return cMap;
     }
 
     /** Returns a map from the integers in the list to their squares. For example, if the input list
@@ -15,12 +21,20 @@ public class MapExercises {
      */
     public static Map<Integer, Integer> squares(List<Integer> nums) {
         // TODO: Fill in this function.
-        return null;
+        Map<Integer, Integer> sqMap = new HashMap<>();
+        for (int i : nums){
+            sqMap.put(i, i * i);
+        }
+        return sqMap;
     }
 
     /** Returns a map of the counts of all words that appear in a list of words. */
     public static Map<String, Integer> countWords(List<String> words) {
         // TODO: Fill in this function.
-        return null;
+        Map<String, Integer> countMap = new HashMap<>();
+        for (String word : words) {
+            countMap.put(word, countMap.getOrDefault(word, 0) + 1);
+        }
+        return countMap;
     }
 }
