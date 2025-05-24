@@ -1,12 +1,12 @@
 A record of me taking CS61B, Spring 2025 during my summer vacation at 2025.
 ##### Checklists:
-> Lab1
+> Lab1 5/19/2025
 > 
-> Lab2
+> Lab2 5/22/2025
 
-> HW0A
+> HW0A 5/20/2025
 > 
-> HW0B
+> HW0B 5/21/2025
 > 
 > Missing HW1 (On *Gradescope* that I can't access)
 > 
