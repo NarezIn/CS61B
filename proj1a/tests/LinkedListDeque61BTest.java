@@ -128,7 +128,7 @@ public class LinkedListDeque61BTest {
         assertThat(lld1.size()).isEqualTo(3);
 
         lld1.removeLast();  // [0, 1]
-        assertThat(lld1.toList()).containsExactly(1, 2).inOrder();
+        assertThat(lld1.toList()).containsExactly(0, 1).inOrder();
         assertThat(lld1.size()).isEqualTo(2);
 
         lld1.removeLast();  // [0]
@@ -138,5 +138,32 @@ public class LinkedListDeque61BTest {
         lld1.removeFirst(); // []
         assertThat(lld1.isEmpty()).isTrue();
         assertThat(lld1.size()).isEqualTo(0);
+
+        assertThat(lld1.removeFirst()).isNull();
     }
+
+    // some extra tests
+    @Test
+    /** Test of adding some elements to a deque and remove them all,
+     * then check that addFirst and addLast still works. */
+    public void addFirstAndLastAfterRemoveToEmpty(){
+        Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+        lld1.addLast(0);
+        lld1.addLast(1);
+        lld1.addFirst(-1);
+        assertThat(lld1.toList()).containsExactly(-1, 0, 1).inOrder();
+
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeLast();
+        assertThat(lld1.toList()).containsExactly().inOrder();
+
+        lld1.addFirst(100);
+        assertThat(lld1.toList()).containsExactly(100).inOrder();
+
+        lld1.removeLast();
+        lld1.addLast(200);
+        assertThat(lld1.toList()).containsExactly(200).inOrder();
+    }
+
 }
