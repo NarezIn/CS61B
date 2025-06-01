@@ -23,22 +23,22 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
     }
     @Override
     public void addFirst(T x) {
-        // if unnecessary to resize:
+        size += 1;
+        resizeUp();
         items[nextFirst--] = x;
         if(nextFirst < 0){// After pseudo-updating nextFirst, check if it's still a valid index.
             nextFirst = items.length - 1;// if not, make it the end of the array. (circular deque)
         }
-        size += 1;
     }
 
     @Override
     public void addLast(T x) {
-        // if unnecessary to resize:
+        size += 1;
+        resizeUp();
         items[nextLast++] = x;
         if(nextLast >= items.length){
             nextLast = 0;//same idea as in addFirst()
         }
-        size += 1;
     }
 
     @Override
@@ -93,6 +93,18 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
         throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
     }
 
-    /** Resize the ArrayDeque if when necessary */
-    // You were HERE!!!!!!!!!!!!!!
+    /**
+     * Resize up the ArrayDeque when this.size reaches to the length of items.
+     * This method should go after updating the size. */
+    public void resizeUp(){
+        if (size > items.length) {
+            T[] newItems = (T[]) new Object[items.length * 2];
+            for (int i = 0; i < items.length; i++) {
+                newItems[i] = this.get(i);
+            }
+            nextFirst = newItems.length - 1;
+            nextLast = items.length;
+            items = newItems;
+        }
+    }
 }

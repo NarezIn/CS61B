@@ -130,6 +130,7 @@ public class ArrayDeque61BTest {
 
         assertThat(ad1.toList()).containsExactly("Front", "Mid1", "Mid2", "Back").inOrder();
     }
+
     @Test
     void toListAfterAddAndRemoveTest(){
         Deque61B<String> ad1 = new ArrayDeque61B<>();
@@ -144,6 +145,34 @@ public class ArrayDeque61BTest {
 
         ad1.removeLast();//["Mid1"]
         assertThat(ad1.toList()).containsExactly("Mid1").inOrder();
+    }
+
+    @Test
+    void addFirstAndLastResizingUpTest1(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        for (int i = 0; i <= 8;i++){
+            if(i % 2 == 0){
+                ad1.addFirst(i);//8...64201357, 8 would overwrite item at nextFirst.
+            }
+            else{
+                ad1.addLast(i);
+            }
+        }
+        assertThat(ad1.toList()).containsExactly(8, 6, 4, 2, 0, 1, 3, 5, 7).inOrder();
+    }
+
+    @Test
+    void addFirstAndLastResizingUpTest2(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        for (int i = 0; i <= 8;i++){
+            if(i % 2 == 1){
+                ad1.addFirst(i);//753102468
+            }
+            else{
+                ad1.addLast(i);
+            }
+        }
+        assertThat(ad1.toList()).containsExactly(7, 5, 3, 1, 0, 2, 4, 6, 8).inOrder();
     }
 
 }
