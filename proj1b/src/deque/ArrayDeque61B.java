@@ -18,8 +18,8 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
     public ArrayDeque61B(){
         items = (T[]) new Object[8];
         size = 0;
-        nextFirst = 3;
-        nextLast = 4;
+        nextFirst = 6;
+        nextLast = 7;
     }
     @Override
     public void addFirst(T x) {
@@ -62,12 +62,22 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
 
     @Override
     public T removeFirst() {
-        return null;
+        size -= 1;
+        int First = (nextFirst + 1 >= items.length) ? 0 : nextFirst + 1;
+        T thing = items[First];
+        items[First] = null;
+        nextFirst = First;
+        return thing;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        size -= 1;
+        int Last = (nextLast - 1 < 0) ? items.length - 1 : nextLast - 1;
+        T thing = items[Last];
+        items[Last] = null;
+        nextLast = Last;
+        return thing;
     }
 
     @Override
@@ -75,11 +85,14 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
         if (index < 0 || index >= size) {
             return null;
         }
-        return items[nextFirst + index + 1];
+        return items[Math.floorMod(nextFirst + index + 1, items.length)];
     }
 
     @Override
     public T getRecursive(int index) {
-        return null;
+        throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
     }
+
+    /** Resize the ArrayDeque if when necessary */
+    // You were HERE!!!!!!!!!!!!!!
 }
