@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -175,4 +176,53 @@ public class ArrayDeque61BTest {
         assertThat(ad1.toList()).containsExactly(7, 5, 3, 1, 0, 2, 4, 6, 8).inOrder();
     }
 
+    @Test
+    void ResizingUpManyTimesTest(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        List<Integer> expected = new ArrayList<>();
+
+        for (int i = 0; i < 100;i++){
+            ad1.addLast(i);
+            expected.add(i);
+        }
+        assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
+    }
+
+    @Test
+    void ResizingDownWhileRemoveFirstTest(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        List<Integer> expected = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++){
+            ad1.addLast(i);
+            expected.add(i);
+        }
+        assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
+
+        for (int j = 0; j <= 75; j++){
+            ad1.removeFirst();
+            expected.removeFirst();
+        }
+
+        assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
+    }
+
+    @Test
+    void ResizingDownWhileRemoveLastTest(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        List<Integer> expected = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++){
+            ad1.addLast(i);
+            expected.add(i);
+        }
+        assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
+
+        for (int j = 0; j <= 75; j++){
+            ad1.removeLast();
+            expected.removeLast();
+        }
+
+        assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
+    }
 }

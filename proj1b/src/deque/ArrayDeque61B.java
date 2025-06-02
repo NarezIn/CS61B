@@ -62,6 +62,7 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
 
     @Override
     public T removeFirst() {
+        resizeDown();
         size -= 1;
         int First = (nextFirst + 1 >= items.length) ? 0 : nextFirst + 1;
         T thing = items[First];
@@ -72,6 +73,7 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
 
     @Override
     public T removeLast() {
+        resizeDown();
         size -= 1;
         int Last = (nextLast - 1 < 0) ? items.length - 1 : nextLast - 1;
         T thing = items[Last];
@@ -94,7 +96,7 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
     }
 
     /**
-     * Resize up the ArrayDeque when this.size reaches to the length of items.
+     * Resize up the ArrayDeque when this.size reaches the length of items.
      * This method should go after updating the size. */
     public void resizeUp(){
         if (size > items.length) {
@@ -104,6 +106,30 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
             }
             nextFirst = newItems.length - 1;
             nextLast = items.length;
+            items = newItems;
+        }
+    }
+
+    /**
+     * Resize down the ArrayDeque when this.size reaches below 25% of items.length,
+     * and items.length is at least 16.
+     * This method should go after updating the size. */
+    public void resizeDown(){
+        resizeDown(size - 1);
+    }
+
+    /**
+     * Helper method of resizeDown
+     * @param hypoSize: what the size would be after the removeFirst/removeLast operation.
+     */
+    private void resizeDown(int hypoSize){
+        if (items.length >= 16 && hypoSize < (items.length / 4)) {
+            T[] newItems = (T[]) new Object[items.length / 2];
+            for (int i = 0; i < size; i++) {
+                newItems[i] = this.get(i);
+            }
+            nextFirst = newItems.length - 1;
+            nextLast = size; //items.length;
             items = newItems;
         }
     }
