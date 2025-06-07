@@ -1,6 +1,7 @@
 import deque.ArrayDeque61B;
 
 import deque.Deque61B;
+import deque.LinkedListDeque61B;
 import jh61b.utils.Reflection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -225,4 +226,37 @@ public class ArrayDeque61BTest {
 
         assertThat(ad1.toList()).containsExactlyElementsIn(expected).inOrder();
     }
+
+    @Test
+    void iterationTest(){
+        Deque61B<String> ad1 = new ArrayDeque61B<>();
+
+        ad1.addLast("front");
+        ad1.addLast("middle");
+        ad1.addLast("back");
+        for (String s : ad1) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void iterationArrayDequeContainsExactlyTest() {
+        Deque61B<String> ad1 = new ArrayDeque61B<>();
+
+        ad1.addLast("front"); // after this call we expect: ["front"]
+        ad1.addLast("middle"); // after this call we expect: ["front", "middle"]
+        ad1.addLast("back"); // after this call we expect: ["front", "middle", "back"]
+        assertThat(ad1).containsExactly("front", "middle", "back");
+    }
+
+    @Test
+    public void iterationLLDequeContainsExactlyTest() {
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+        lld1.addLast("front"); // after this call we expect: ["front"]
+        lld1.addLast("middle"); // after this call we expect: ["front", "middle"]
+        lld1.addLast("back"); // after this call we expect: ["front", "middle", "back"]
+        assertThat(lld1).containsExactly("front", "middle", "back");
+    }
+
 }

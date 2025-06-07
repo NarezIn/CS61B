@@ -2,10 +2,11 @@ package deque;
 
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.List;
 import java.lang.Math;
 
-public class ArrayDeque61B<T> implements Deque61B<T> {
+public class ArrayDeque61B<T> implements Deque61B<T>, Iterable<T> {
     private T[] items;
     private int size;
     private int nextFirst;
@@ -131,6 +132,29 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
             nextFirst = newItems.length - 1;
             nextLast = size; //items.length;
             items = newItems;
+        }
+    }
+
+    public Iterator<T> iterator(){
+        return new ArrayDeque61BIterator();
+    }
+
+    private class ArrayDeque61BIterator implements Iterator<T> {
+        private int wizPos;
+
+        ArrayDeque61BIterator(){
+            wizPos = 0;
+        }
+        @Override
+        public boolean hasNext() {
+            return wizPos < size;
+        }
+
+        @Override
+        public T next() {
+            T thing = get(wizPos);
+            wizPos += 1;
+            return thing;
         }
     }
 }
