@@ -12,8 +12,8 @@ public class Maximizer61B {
      */
     public static <T extends Comparable<T>> T max(Iterable<T> iterable) {
         Iterator<T> iterator = iterable.iterator();
-        if (!iterator.hasNext()) {
-            throw new IllegalArgumentException("Iterable is empty");
+        if (!iterator.hasNext()) {// if iterable is empty
+            return null;
         }
         T maxThing = iterator.next();
         for (T current : iterable) {
@@ -34,8 +34,8 @@ public class Maximizer61B {
      */
     public static <T> T max(Iterable<T> iterable, Comparator<T> comp) {
         Iterator<T> iterator = iterable.iterator();
-        if (!iterator.hasNext()) {
-            throw new IllegalArgumentException("Iterable is empty");
+        if (!iterator.hasNext()) {// if iterable is empty
+            return null;
         }
         T maxThing = iterator.next();
         for (T current : iterable) {
