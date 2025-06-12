@@ -1,5 +1,6 @@
 package deque;
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class Maximizer61B {
     /**
@@ -10,7 +11,17 @@ public class Maximizer61B {
      * @return          the maximum element
      */
     public static <T extends Comparable<T>> T max(Iterable<T> iterable) {
-        return null;
+        Iterator<T> iterator = iterable.iterator();
+        if (!iterator.hasNext()) {
+            throw new IllegalArgumentException("Iterable is empty");
+        }
+        T maxThing = iterator.next();
+        for (T current : iterable) {
+            if (current.compareTo(maxThing) > 0) {
+                maxThing = current;
+            }
+        }
+        return maxThing;
     }
 
     /**
@@ -22,7 +33,17 @@ public class Maximizer61B {
      * @return          the maximum element according to the comparator
      */
     public static <T> T max(Iterable<T> iterable, Comparator<T> comp) {
-        return null;
+        Iterator<T> iterator = iterable.iterator();
+        if (!iterator.hasNext()) {
+            throw new IllegalArgumentException("Iterable is empty");
+        }
+        T maxThing = iterator.next();
+        for (T current : iterable) {
+            if (comp.compare(current, maxThing) > 0) {
+                maxThing = current;
+            }
+        }
+        return maxThing;
     }
 
     public static void main(String[] args) {
