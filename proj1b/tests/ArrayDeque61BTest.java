@@ -259,4 +259,57 @@ public class ArrayDeque61BTest {
         assertThat(lld1).containsExactly("front", "middle", "back");
     }
 
+    @Test
+    public void equalLinkedListDequeTest() {
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+        Deque61B<String> lld2 = new LinkedListDeque61B<>();
+
+        lld1.addLast("front");
+        lld1.addLast("middle");
+        lld1.addLast("back");
+
+        lld2.addLast("front");
+        lld2.addLast("middle");
+        lld2.addLast("back");
+
+        assertThat(lld1).isEqualTo(lld2);
+    }
+
+    @Test
+    public void equalArrayDequeTest() {
+        Deque61B<String> ad1 = new ArrayDeque61B<>();
+        Deque61B<String> ad2 = new ArrayDeque61B<>();
+
+        ad1.addLast("front");
+        ad1.addLast("middle");
+        ad1.addLast("back");
+
+        ad2.addLast("front");
+        ad2.addLast("middle");
+        ad2.addLast("back");
+
+        assertThat(ad1).isEqualTo(ad2);
+    }
+
+    @Test
+    public void toStringArrayDequeTest(){
+        Deque61B<String> ad1 = new ArrayDeque61B<>();
+
+        ad1.addLast("front");
+        ad1.addLast("middle");
+        ad1.addLast("back");
+
+        System.out.println(ad1);
+    }
+
+    @Test
+    public void toStringLinkedListDequeTest(){
+        Deque61B<String> lld1 = new LinkedListDeque61B<>();
+
+        lld1.addLast("front");
+        lld1.addLast("middle");
+        lld1.addLast("back");
+
+        System.out.println(lld1);//[front, middle, back]
+    }
 }

@@ -26,13 +26,11 @@ public class Maximizer61B {
     }
 
     public static void main(String[] args) {
-        // The style checker will complain about this main method, feel free to delete.
-
-        // ArrayDeque61B<Integer> ad = new ArrayDeque61B<>();
-        // ad.addLast(5);
-        // ad.addLast(12);
-        // ad.addLast(17);
-        // ad.addLast(23);
-        // System.out.println(max(ad));
+         ArrayDeque61B<Integer> ad = new ArrayDeque61B<>();
+         ad.addLast(5);
+         ad.addLast(12);
+         ad.addLast(17);
+         ad.addLast(23);
+         System.out.println(max(ad));
     }
 }

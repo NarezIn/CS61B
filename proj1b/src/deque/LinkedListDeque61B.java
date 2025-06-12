@@ -130,6 +130,30 @@ public class LinkedListDeque61B<T> implements Deque61B<T>, Iterable<T>{
         return getRecursive(currIndex - 1, currNode.next);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other instanceof LinkedListDeque61B<?> otherDeque) {
+            if (this.size != otherDeque.size()) {
+                return false;
+            }
+            for (int ii = 0; ii < this.size; ii++) {
+                if (this.get(ii) != otherDeque.get(ii)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString(){
+        return this.toList().toString();
+    }
+
     public Iterator<T> iterator(){
         return new LinkedListDeque61BIterator();
     }
