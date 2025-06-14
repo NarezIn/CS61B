@@ -1,7 +1,6 @@
 package deque;
 
 import java.util.*;
-import java.lang.Math;
 
 public class ArrayDeque61B<T> implements Deque61B<T>, Iterable<T> {
     private T[] items;
@@ -19,6 +18,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>, Iterable<T> {
         nextFirst = 6;
         nextLast = 7;
     }
+
     @Override
     public void addFirst(T x) {
         size += 1;
