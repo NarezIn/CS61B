@@ -4,27 +4,27 @@ ArrayDeque61B:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: N/A
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: I finished it kinda in a fast pace compared to last year when I was doing it.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: Maybe not in this project, but in Proj0 I chose to do the hardmode and I didn't think I design mode code that well.
 
 Q: What did you learn by talking to your partner about writing ArrayDeque61B?
 
-A:
+A: N/A
 
 Q: What do you wish you would have known before writing ArrayDeque61B, if anything?
 
-A:
+A: N/A
 
 Q: If you wrote ArrayDeque61B again, what would you do differently, if anything?
 
-A:
+A: Nope.
 
 -----
 
@@ -32,27 +32,27 @@ LinkedListDeque61B:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: N/A
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: N/A
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: N/A
 
 Q: What did you learn by talking to your partner about writing LinkedListDeque61B?
 
-A:
+A: N/A
 
 Q: What do you wish you would have known before writing LinkedListDeque61B, if anything?
 
-A:
+A: N/A
 
 Q: If you wrote LinkedListDeque61B again, what would you do differently, if anything?
 
-A:
+A: N/A
 
 -----
 
@@ -60,4 +60,4 @@ Meta:
 
 Q: Did you like this design review process? Anything we should do differently next time?
 
-A: 
+A: N/A
