@@ -10,7 +10,7 @@ A record of me taking CS61B, Spring 2025 during my summer vacation at 2025.
 > 
 > Lab5 6/16/2025
 > 
-> Lab_disjointSets (from sp19) date?
+> Lab_disjointSets (from sp19) 6/20/2025
 
 > HW0A 5/20/2025
 > 
