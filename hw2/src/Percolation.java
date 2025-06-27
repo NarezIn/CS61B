@@ -57,11 +57,11 @@ public class Percolation {
                 //If (row2, col2) is located at the top row or (row1, col1) is already "Full",
                 //connect it with the virtual top, meaning "Full".
                 if (row2 == 0){
-                    grid.union(to1D(row2, col2), to1D(-1, col2));
+                    grid.union(grid.find(to1D(-1, col2)), grid.find(to1D(row2, col2)));
                 }
-                else if (isFull(row1, col1)){
-                    grid.union(to1D(row2, col2), grid.find(to1D(row1, col1)));
-                }//check this block and isFull().... You were here !!!
+                if (isFull(row1, col1)){//else if or if?
+                    grid.union(grid.find(to1D(row1, col1)), grid.find(to1D(row2, col2)));
+                }
             }
         }
     }
@@ -99,7 +99,14 @@ public class Percolation {
     public boolean isFull(int row, int col) {
         validateIndex(row);
         validateIndex(col);
-        return grid.connected(grid.find(to1D(row, col)), to1D(-1, col));
+        for (int i = 0; i < length; i++){
+            if (grid.connected(to1D(-1, i), grid.find(to1D(row, col)))){
+                return true;
+            }
+        }
+        //return grid.connected(to1D(-1, col), grid.find(to1D(row, col)));
+        //Rewrite this. Need constant time
+        return false;
     }
 
     public int numberOfOpenSites() {
@@ -107,11 +114,15 @@ public class Percolation {
     }
 
     public boolean percolates() {
-        // TODO: Fill in this method.
+        for (int i = 0; i < length; i++){
+            for (int j = 0; j < length; j++) {
+                if (grid.connected(to1D(-1, i), to1D(length, j))) {
+                    return true;
+                }
+            }
+        }
+        //return grid.connected(to1D(-1, col), grid.find(to1D(row, col)));
+        //Rewrite this. Need constant time
         return false;
     }
-
-    // TODO: Add any useful helper methods (we highly recommend this!).
-    // TODO: Remove all TODO comments before submitting.
-
 }
