@@ -81,9 +81,27 @@ public class PercolationTest {
     // TODO: Using the given tests above as a template,
     //       write some more tests and delete the fail() line
     @Test
-    public void yourFirstTestHere() {
-
-        int[][] examp1 = new int[2][2];
+    public void bottomUpTest() {
+        int N = 3;
+        Percolation p = new Percolation(N);
+        // open sites at (r, c) = (0, 1), (2, 0), (3, 1), etc. (0, 0) is top-left
+        int[][] openSites = {
+                {2, 0},
+                {1, 0},
+                {1, 1},
+                {1, 2},
+                {0, 2},
+        };
+        Cell[][] expectedState = {
+                {Cell.CLOSED, Cell.CLOSED, Cell.FULL},
+                {Cell.FULL, Cell.FULL, Cell.FULL},
+                {Cell.FULL, Cell.CLOSED, Cell.CLOSED}
+        };
+        for (int[] site : openSites) {
+            p.open(site[0], site[1]);
+        }
+        assertThat(getState(N, p)).isEqualTo(expectedState);
+        assertThat(p.percolates()).isTrue();
     }
 
 }
