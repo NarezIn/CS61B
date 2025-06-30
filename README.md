@@ -18,6 +18,7 @@ A record of me taking CS61B, Spring 2025 during my summer vacation at 2025.
 > 
 > Missing HW1 (On *Gradescope* that I can't access)
 > 
+> HW2 6/30/2025
 
 > Proj0_hardmode 5/23/2025
 > 
