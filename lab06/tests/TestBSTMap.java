@@ -125,4 +125,18 @@ public class TestBSTMap {
 
         b.printInOrder();
     }
+
+    @Test //conduct this with you visual power.
+    public void printIteratorTest(){
+        BSTMap<String, String> b = new BSTMap<>();
+        b.put("d", "parmesan");
+        b.put("a", "mozzarella");
+        b.put("c", "swiss");
+        b.put("b", "pepper jack");
+        b.put("e", "gouda");
+
+        for (String thing : b){
+            System.out.println(thing);
+        }
+    }
 }

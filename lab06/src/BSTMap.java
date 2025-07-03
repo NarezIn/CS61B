@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
     /** Pairs of keys and values are stored in a BST of Node objects.
@@ -130,9 +128,11 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
      */
     @Override
     public Set<K> keySet() {
-        throw new UnsupportedOperationException();
-        //Set<K> set = new HashSet<>();
-        //return Set.of();
+        Set<K> set = new TreeSet<>();//HashSet didn't pass...
+        for (K thing : this){
+            set.add(thing);
+        }
+        return set;
     }
 
     /**
@@ -146,7 +146,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
     @Override
     public V remove(K key) {
         throw new UnsupportedOperationException();
-        //return null;
     }
 
     /**
@@ -156,8 +155,36 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
      */
     @Override
     public Iterator<K> iterator() {
-        throw new UnsupportedOperationException();
-        //return null;
+        return new BSTMapIterator();
+    }
+
+    private class BSTMapIterator implements Iterator<K> {
+        private ArrayList<K> list;
+        private int currIterated;
+
+        public BSTMapIterator() {
+            list = new ArrayList<>();
+            construct(list, root);
+            currIterated = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currIterated < list.size();
+        }
+
+        @Override
+        public K next() {
+            return list.get(currIterated++);
+        }
+
+        private void construct(ArrayList<K> list, Node currNode){
+            if (currNode != null){
+                construct(list, currNode.left);
+                list.add(currNode.key);
+                construct(list, currNode.right);
+            }
+        }
     }
 
     /** Print out keys in the BST in increasing order. */

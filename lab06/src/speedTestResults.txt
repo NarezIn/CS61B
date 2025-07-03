@@ -1,0 +1,32 @@
+1.
+length = 5, numOfStrings = 10000
+class ULLMap: 0.28 sec
+class BSTMap: 0.01 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.00 sec
+
+2.
+length = 5, numOfStrings = 100000000
+--Stack Overflow--
+
+3.
+length = 10, numOfStrings = 10000000
+--Stack Overflow--
+
+4.
+length = 5, numOfStrings = 10000000
+--Stack Overflow--
+
+5.
+length = 5, numOfStrings = 1000000
+--Stack Overflow -- couldn't add 1000000 strings of length 5. //For ULLMap
+class BSTMap: 1.44 sec
+Java's Built-in TreeMap: 1.14 sec
+Java's Built-in HashMap: 0.35 sec
+
+6.
+length = 4, numOfStrings = 10000000
+--Stack Overflow -- couldn't add 10000000 strings of length 4. //For ULLMap
+class BSTMap: 11.14 sec
+Java's Built-in TreeMap: 8.50 sec
+Java's Built-in HashMap: 2.62 sec
