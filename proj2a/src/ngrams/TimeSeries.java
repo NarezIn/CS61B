@@ -1,5 +1,6 @@
 package ngrams;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -37,8 +38,7 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      *  Returns all years for this time series in ascending order.
      */
     public List<Integer> years() {
-        // TODO: Fill in this method.
-        return null;
+        return new ArrayList<>(this.keySet());
     }
 
     /**
@@ -47,7 +47,11 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      */
     public List<Double> data() {
         // TODO: Fill in this method.
-        return null;
+        List<Double> data = new ArrayList<>();
+        for (Integer yearKey : years()) {
+            data.add(get(yearKey));
+        }
+        return data;
     }
 
     /**
@@ -61,6 +65,10 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      */
     public TimeSeries plus(TimeSeries ts) {
         // TODO: Fill in this method.
+        if (ts.years().isEmpty() && this.years().isEmpty()){
+            return new TimeSeries();
+        }//You were HERE!!!!!!!!!
+        TimeSeries total = new TimeSeries();
         return null;
     }
 
