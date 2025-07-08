@@ -61,4 +61,23 @@ public class TimeSeriesTest {
         assertThat(totalPopulation.years()).isEmpty();
         assertThat(totalPopulation.data()).isEmpty();
     }
+
+    @Test
+    public void testDividedBy() {
+        TimeSeries catPopulation = new TimeSeries();
+        catPopulation.put(1994, 100.0);
+        catPopulation.put(1995, 200.0);
+
+        TimeSeries dogPopulation = new TimeSeries();
+        dogPopulation.put(1991, 0.0);
+        dogPopulation.put(1994, 400.0);
+        dogPopulation.put(1995, 500.0);
+
+        TimeSeries quotients = catPopulation.dividedBy(dogPopulation);
+        //        expected
+        //        1994, 0.25
+        //        1995, 0.4
+        assertThat(quotients.get(1994)).isWithin(1E-10).of(0.25);
+        assertThat(quotients.get(1995)).isWithin(1E-10).of(0.4);
+    }
 } 
