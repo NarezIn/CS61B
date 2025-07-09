@@ -25,3 +25,5 @@ A record of me taking CS61B, Spring 2025 during my summer vacation at 2025.
 > Proj0_hardmode 5/23/2025
 > 
 > Proj1A 5/29/2025
+> 
+> Proj1B 6/NA/2025
