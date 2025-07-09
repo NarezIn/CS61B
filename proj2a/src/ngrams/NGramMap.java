@@ -1,9 +1,15 @@
 package ngrams;
 
+import edu.princeton.cs.algs4.In;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 import static ngrams.TimeSeries.MAX_YEAR;
 import static ngrams.TimeSeries.MIN_YEAR;
+import static utils.Utils.SHORT_WORDS_FILE;
 
 /**
  * An object that provides utility methods for making queries on the
@@ -18,12 +24,38 @@ import static ngrams.TimeSeries.MIN_YEAR;
 public class NGramMap {
 
     // TODO: Add any necessary static/instance variables.
+    HashMap<String, TimeSeries> words;//[word, [year, num of this word this year]]
+    TimeSeries counts;//[year, total words that year]
 
     /**
      * Constructs an NGramMap from WORDSFILENAME and COUNTSFILENAME.
      */
     public NGramMap(String wordsFilename, String countsFilename) {
         // TODO: Fill in this constructor. See the "NGramMap Tips" section of the spec for help.
+        counts = new TimeSeries();
+        In countsFile = new In(countsFilename);
+        while (countsFile.hasNextLine()) {
+            String nextLine = countsFile.readLine();
+            String[] splitLine = nextLine.split(",");
+            counts.put(Integer.valueOf(splitLine[0]), Double.valueOf(splitLine[1]));
+        }
+
+        words = new HashMap<>();
+        In wordsFile = new In(wordsFilename);
+        while (wordsFile.hasNextLine()) {
+            String nextLine = wordsFile.readLine();
+            String[] splitLine = nextLine.split("\t");//maybe shorten these two lines;
+            //if words contains this word, get its TimeSeries;
+            if (words.containsKey(splitLine[0])) {
+                //if words doesn't contain this key, what would words.get(key) return? null?
+                words.get(splitLine[0]).put(Integer.valueOf(splitLine[1]), Double.valueOf(splitLine[2]));
+            }
+            else{
+                TimeSeries yearData = new TimeSeries();
+                yearData.put(Integer.valueOf(splitLine[1]), Double.valueOf(splitLine[2]));
+                words.put(splitLine[0], yearData);
+            }
+        }
     }
 
     /**
@@ -35,7 +67,12 @@ public class NGramMap {
      */
     public TimeSeries countHistory(String word, int startYear, int endYear) {
         // TODO: Fill in this method.
-        return null;
+        if (words.containsKey(word)) {
+            return new TimeSeries(words.get(word), startYear, endYear);
+        }
+        else{
+            return new TimeSeries();
+        }
     }
 
     /**
@@ -45,8 +82,16 @@ public class NGramMap {
      * is not in the data files, returns an empty TimeSeries.
      */
     public TimeSeries countHistory(String word) {
-        // TODO: Fill in this method.
-        return null;
+        if (words.containsKey(word)) {
+            TimeSeries yearData = words.get(word);
+            List<Integer> years = yearData.years();
+            int startYear = years.getFirst();
+            int endYear = years.getLast();
+            return new TimeSeries(yearData, startYear, endYear);
+        }
+        else{
+            return new TimeSeries();
+        }
     }
 
     /**
