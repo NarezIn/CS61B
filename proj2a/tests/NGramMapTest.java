@@ -52,6 +52,8 @@ public class NGramMapTest {
         }
     }
 
+    //SHORTER_WORDS_FILE does not exist in /data.
+    //I also checked proj2a vid2 and saw SHORTER_WORDS_FILE was not in Hug's /data directory.
     @Test
     public void testOnShortFile() {
         // creates an NGramMap from a large dataset

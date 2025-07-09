@@ -29,8 +29,14 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      */
     public TimeSeries(TimeSeries ts, int startYear, int endYear) {
         super();
-        for (int i = startYear; i <= endYear; i++) {
-            super.put(i, ts.get(i));
+        List<Integer> yearKeys = ts.years();
+        int startIndex = Collections.binarySearch(yearKeys, startYear);
+        for (int i = startIndex; i < yearKeys.size(); i++) {
+            int year = yearKeys.get(i);
+            if (year > endYear) {
+                break;
+            }
+            super.put(year, ts.get(year));
         }
     }
 
@@ -47,7 +53,8 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      */
     public List<Double> data() {
         List<Double> data = new ArrayList<>();
-        for (Integer yearKey : this.years()) {
+        List<Integer> years = this.years();
+        for (Integer yearKey : years) {
             data.add(this.get(yearKey));
         }
         return data;
@@ -94,7 +101,8 @@ public class TimeSeries extends TreeMap<Integer, Double> {
      */
     public TimeSeries dividedBy(TimeSeries ts) {
         TimeSeries quo = new TimeSeries();
-        for (Integer yearKey : this.years()){
+        List<Integer> years = this.years();
+        for (Integer yearKey : years){
             if (!ts.containsKey(yearKey)){
                 throw new IllegalArgumentException();
             }
