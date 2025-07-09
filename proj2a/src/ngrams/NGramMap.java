@@ -154,12 +154,9 @@ public class NGramMap {
         TimeSeries summed = new TimeSeries();
         for (String word : wordCollects) {
             if (words.containsKey(word)){
-                summed.plus(words.get(word));
+                summed = summed.plus(words.get(word));
             }
         }
         return summed.dividedBy(counts);
     }
-
-    // TODO: Add any private helper methods.
-    // TODO: Remove all TODO comments before submitting.
 }
