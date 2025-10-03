@@ -124,7 +124,6 @@ public class NGramMap {
      */
     public TimeSeries weightHistory(String word) {
         if (words.containsKey(word)) {
-            TimeSeries yearData = words.get(word);
             return words.get(word).dividedBy(counts);
         }
         return new TimeSeries();
